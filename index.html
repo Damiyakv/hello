@@ -57,12 +57,12 @@
       }
   
       function draw() {
-        background('black');
+        background('white');
         for (let i = 0; i < nb; i++) {
           p[i].draw();
         }
-        stroke('white');
-        strokeWeight(1)
+        stroke('black');
+        strokeWeight(0.8)
         for (let i = 0; i < nb; i++) {
           for (let j = i + 1; j < nb; j++) {
             let d = dist(p[i].x, p[i].y, p[j].x, p[j].y);
