@@ -1,37 +1,96 @@
 <head>
     <link rel="stylesheet" href="style.css">
-  
-<style>
-    body {
+    <style>
+      body {
         overflow: hidden;
-    }
-</style>
-</head>
-<h1> Damiya Kaul Verma</h1>
-
-
-<nav id="homeLinks">
-    
-    <a href ="cnd.html">Coding & Data Portfolio</a>
-    <br>
-    <a href ="artPortfolio.html">Art Portfolio</a>
-    <br>
-    <a href ="about.html">About</a>
-    <br>
-    
-
-
-</nav>
-
-<div class= "vertical-line"></div>
-
-<div class= "vertical-line-2"></div>
-
-<div class= "red-vertical-line-1"></div>
-
-<div class= "red-vertical-line-2"></div>
-
-<div class= "big-circle"></div>
-
-
-</body>
+        margin: 0;
+      }
+  
+      #particle-box {
+        position: absolute;
+        top: 200px;   /* adjust to match where your old circle was */
+        left: 700px;  /* adjust to match where your old circle was */
+        width: 400px; /* size of the square */
+        height: 400px;
+      }
+  
+      #particle-box canvas {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <h1>Damiya Kaul Verma</h1>
+  
+    <nav id="homeLinks">
+      <a href="cnd.html">Coding & Data Portfolio</a>
+      <br>
+      <a href="artPortfolio.html">Art Portfolio</a>
+      <br>
+      <a href="about.html">About</a>
+      <br>
+    </nav>
+  
+  
+  
+    <!-- particle system container -->
+    <div id="particle-box"></div>
+  
+    <!-- Load p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  
+    <script>
+      let nb = 400;
+      let p = Array(nb);
+      let dim = 3;
+      let Dmin = 70;
+  
+      function setup() {
+        let canvas = createCanvas(700, 700);
+        canvas.parent("particle-box"); // attach sketch to the div
+        for (let i = 0; i < nb; i++) {
+          p[i] = new Particle(random(0, width), random(0, height));
+        }
+      }
+  
+      function draw() {
+        background('0,0,0');
+        for (let i = 0; i < nb; i++) {
+          p[i].draw();
+        }
+        stroke('black');
+        strokeWeight(0.7)
+        for (let i = 0; i < nb; i++) {
+          for (let j = i + 1; j < nb; j++) {
+            let d = dist(p[i].x, p[i].y, p[j].x, p[j].y);
+            if (d <= Dmin) {
+              line(p[i].x, p[i].y, p[j].x, p[j].y);
+            }
+          }
+        }
+      }
+  
+      class Particle {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+          this.vx = random(-0.08, 0.3);
+          this.vy = random(-0.08, 0.1);
+        }
+  
+        draw() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+            this.x = random(0, width);
+            this.y = random(0, height);
+          }
+          circle(this.x, this.y, dim);
+        }
+      }
+    </script>
+  </body>
+  
