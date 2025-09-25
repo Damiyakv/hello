@@ -13,7 +13,7 @@ body {
     font-family: "Overpass", sans-serif;
    font-size: 40px;
    font-weight: 400;
-   color: #FE3232;
+   color: #7180B9;
    margin-top: 15%;
    margin-left: 15%;
 
@@ -44,7 +44,7 @@ body {
   }
 
   a:hover {
-    color: #7180B9;
+    color: #DF2935;
   }
 
 .red-vertical-line-1 {
@@ -165,12 +165,12 @@ ul {
     border:#F5E5FC solid 1px;
 }
 .tag:hover {
-    background-color:#7180B9;
+    background-color:#b0c0ff;
     border-radius: 20px;
     padding: 7px 7px;
     margin: 5px;
     text-decoration: none;
-    color: white;
+    color: rgb(0, 0, 0);
     display: inline-flex;
     align-items: center;
     position: relative;
@@ -180,9 +180,9 @@ ul {
 }
 
 .tag.active {
-    background-color: #7180B9;
+    background-color: #5fc400;
     color: #f0f0f0;
-    border-color: #7180B9;
+    border-color: #5fc400;
     animation: jump 0.5s ease forwards;
 }
 
@@ -193,8 +193,8 @@ ul {
     }
     50% {
         transform: translateY(-5px);
-        background-color: #DF2935;
-        border-color: #DF2935;
+        background-color: #5fc400;
+        border-color: #5fc400;
     }
     85% {
         transform: translateY(1px);
@@ -214,7 +214,7 @@ ul {
 }
 
 ::selection {
-    background: #7180B9;
+    background: #ffd21f;
   }
 
 #filteredItems {
@@ -269,3 +269,12 @@ ul {
         
     }
 }
+.aboutContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 80vh;
+    text-align: center;
+    margin: 0 auto;       /* centers container itself */
+    padding: 0 15%;       /* adds space on left/right (15% of screen width) */
+    box-sizing: border-box;
+  }
